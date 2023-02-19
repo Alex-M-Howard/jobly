@@ -10,7 +10,6 @@ const PASSWORD = process.env.PASSWORD;
 const USER = process.env.USER || "postgres";
 const HOST = process.env.HOST || "localhost";
 const DBPORT = process.env.DBPORT || 5432;
-
 const PORT = +process.env.PORT || 3001;
 
 // Use dev database, testing database, or via env var, production database
@@ -26,7 +25,6 @@ function getDatabaseUri() {
 const BCRYPT_WORK_FACTOR = process.env.NODE_ENV === "test" ? 1 : 13;
 
 console.log("Jobly Config:".green);
-console.log("SECRET_KEY:".yellow, SECRET_KEY);
 console.log("PORT:".yellow, PORT.toString());
 console.log("BCRYPT_WORK_FACTOR".yellow, BCRYPT_WORK_FACTOR);
 console.log("Database:".yellow, getDatabaseUri());
