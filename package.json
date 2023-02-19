@@ -1,0 +1,11 @@
+{
+  "name": "jobly",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others \"cd backend && npm start\" \"cd frontend && npm run dev\" "
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
