@@ -6,10 +6,10 @@ require("dotenv").config();
 require("colors");
 
 const SECRET_KEY = process.env.SECRET_KEY || "secret-dev";
-const PASSWORD = process.env.PASSWORD;
-const USER = process.env.USER || "postgres";
-const HOST = process.env.HOST || "localhost";
-const DBPORT = process.env.DBPORT || 5432;
+const PASSWORD = process.env.PGPASSWORD;
+const USER = process.env.PGUSER || "postgres";
+const HOST = process.env.PGHOST || "localhost";
+const DBPORT = process.env.PGPORT || 5432;
 const PORT = +process.env.PORT || 3001;
 
 // Use dev database, testing database, or via env var, production database
