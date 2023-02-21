@@ -1,7 +1,7 @@
 import React from "react";
 
 function test() {
-  return <h1>HELLO WORLD</h1>;
+  return <h1>search by a company name</h1>;
 }
 
 export default test;
