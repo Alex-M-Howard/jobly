@@ -15,6 +15,7 @@ export default function MyApp(props) {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline enableColorScheme={true} />
+          <NavBar />
           <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
