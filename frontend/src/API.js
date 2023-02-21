@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_REACT_APP_BASE_URL;
 
 /** API Class.
  *
@@ -88,7 +88,7 @@ class JoblyApi {
   // Get all companies
   static async getCompanies() {
     let res = await this.request(`companies/`);
-    return res.company;
+    return res.companies;
   }
 
   // Get company by handle
@@ -179,3 +179,5 @@ class JoblyApi {
 JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+
+export default JoblyApi;
