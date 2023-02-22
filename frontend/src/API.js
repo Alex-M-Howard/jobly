@@ -128,7 +128,7 @@ class JoblyApi {
   // Get all jobs
   static async getJobs() {
     let res = await this.request(`jobs/`);
-    return res.job;
+    return res.jobs;
   }
 
   // Get job by id
