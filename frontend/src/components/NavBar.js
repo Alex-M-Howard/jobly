@@ -81,7 +81,7 @@ function NavBar(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar component="nav" position="sticky">
-        <Toolbar>
+        <Toolbar style={{ backgroundColor: `${theme.palette.primary.main}` }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -126,7 +126,11 @@ function NavBar(props) {
                 </Button>
               </Link>
             ))}
-            <Brightness4Icon onClick={props.toggleTheme} />
+            <Button key="theme-toggle" onClick={props.toggleTheme}>
+              <Brightness4Icon
+                style={{ color: `${theme.palette.toggle.main}` }}
+              />
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

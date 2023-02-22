@@ -18,6 +18,9 @@ const lightTheme = createTheme({
     text: {
       main: "#000",
     },
+    toggle: {
+      main: "#000",
+    },
   },
 });
 
@@ -38,6 +41,9 @@ const darkTheme = createTheme({
     },
     text: {
       main: "#000",
+    },
+    toggle: {
+      main: "#FFF",
     },
   },
 });
