@@ -1,22 +1,21 @@
-import * as React from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import * as React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 // Import Material UI
-import { AppBar, Box, Divider, Drawer } from '@mui/material';
-import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
-import { Toolbar, Typography, Button, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-
+import { AppBar, Box, Divider, Drawer } from "@mui/material";
+import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { Toolbar, Typography, Button, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 
 const drawerWidth = 240;
-const navItems = ['Companies', 'Jobs', 'Profile'];
+const navItems = ["Companies", "Jobs", "Profile"];
 
 function NavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const router = useRouter(); 
-
+  const router = useRouter();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -37,7 +36,8 @@ function NavBar(props) {
               <Link
                 href={`/${item.toLowerCase()}`}
                 alt={item}
-                style={{ textDecoration: "none" }}>
+                style={{ textDecoration: "none" }}
+              >
                 <Typography
                   sx={{
                     fontWeight: `${
@@ -45,13 +45,15 @@ function NavBar(props) {
                         ? "bold"
                         : "normal"
                     }`,
-                  }}>
+                  }}
+                >
                   {item}
                 </Typography>
               </Link>
             </ListItemButton>
           </ListItem>
         ))}
+        <Brightness4Icon onClick={props.toggleTheme} />
       </List>
     </Box>
   );
@@ -61,14 +63,15 @@ function NavBar(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" position='sticky'>
+      <AppBar component="nav" position="sticky">
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}>
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
             <MenuIcon />
           </IconButton>
           <Typography
@@ -76,24 +79,37 @@ function NavBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link href="/" alt="home" style={{ textDecoration: "none", color: '#fff' }}>
+            <Link
+              href="/"
+              alt="home"
+              style={{ textDecoration: "none", color: "#fff" }}
+            >
               Jobly
             </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => ( 
+            {navItems.map((item) => (
               <Link
                 href={`/${item.toLowerCase()}`}
                 alt={item}
-                style={{ textDecoration: "none" }}>
-                <Button key={item} sx={{
-                  color: "#fff",
-                  fontWeight: `${router.pathname === `/${item.toLowerCase()}` ? 'bold' : 'normal'}`
-                }}>
+                style={{ textDecoration: "none" }}
+              >
+                <Button
+                  key={item}
+                  sx={{
+                    color: "#fff",
+                    fontWeight: `${
+                      router.pathname === `/${item.toLowerCase()}`
+                        ? "bold"
+                        : "normal"
+                    }`,
+                  }}
+                >
                   {item}
                 </Button>
               </Link>
             ))}
+            <Brightness4Icon onClick={props.toggleTheme} />
           </Box>
         </Toolbar>
       </AppBar>
@@ -112,7 +128,8 @@ function NavBar(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-          }}>
+          }}
+        >
           {drawer}
         </Drawer>
       </Box>

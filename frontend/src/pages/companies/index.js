@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import JoblyApi from "@/API";
 import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -6,19 +6,17 @@ import { useTheme } from "@mui/material/styles";
 function Companies() {
   const theme = useTheme();
   const [companies, setCompanies] = useState([]);
-  console.log(theme.palette);
+
   useEffect(function fetchWhenMounted() {
     async function fetchData() {
       let data = await JoblyApi.getCompanies();
       setCompanies(data);
     }
-    
+
     fetchData();
+  }, []);
 
-  }, [])
-
-
-  const companyCards = companies.map(company => {
+  const companyCards = companies.map((company) => {
     return (
       <Grid item xs={12} sm={8} md={4} lg={3}>
         <Card variant="outlined" sx={{ maxWidth: 425 }}>
@@ -32,7 +30,8 @@ function Companies() {
             title={company.name}
           />
           <CardContent
-            style={{ backgroundColor: `${theme.palette.primary.main}` }}>
+            style={{ backgroundColor: `${theme.palette.secondary.main}` }}
+          >
             <Typography gutterBottom variant="h5" component="div">
               {company.name}
             </Typography>
@@ -41,18 +40,16 @@ function Companies() {
         </Card>
       </Grid>
     );
-  })
-
+  });
 
   return (
     <div>
       <Grid
         container
         spacing={2}
-        justifyContent='center'
-        alignItems='stretch'
-        style={{marginTop: '5px', padding: '5px'}}
-        
+        justifyContent="center"
+        alignItems="stretch"
+        style={{ marginTop: "5px", padding: "5px" }}
       >
         {companyCards}
       </Grid>
