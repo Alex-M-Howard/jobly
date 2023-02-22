@@ -8,6 +8,7 @@ import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Toolbar, Typography, Button, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
+import { useTheme } from "@mui/material/styles";
 
 const drawerWidth = 240;
 const navItems = ["Companies", "Jobs", "Profile"];
@@ -16,15 +17,30 @@ function NavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const router = useRouter();
+  const theme = useTheme();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: "center" }}
+      style={{
+        backgroundColor: `${theme.palette.accent.main}`,
+        height: "100%",
+      }}
+    >
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link href="/" alt="home" style={{ textDecoration: "none" }}>
+        <Link
+          href="/"
+          alt="home"
+          style={{
+            textDecoration: "none",
+            color: `${theme.palette.text.main}`,
+          }}
+        >
           Jobly
         </Link>
       </Typography>
@@ -45,6 +61,7 @@ function NavBar(props) {
                         ? "bold"
                         : "normal"
                     }`,
+                    color: `${theme.palette.text.main}`,
                   }}
                 >
                   {item}

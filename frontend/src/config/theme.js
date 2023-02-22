@@ -15,6 +15,9 @@ const lightTheme = createTheme({
     accent: {
       main: "#fff089",
     },
+    text: {
+      main: "#000",
+    },
   },
 });
 
@@ -31,7 +34,10 @@ const darkTheme = createTheme({
       main: "#CC1236",
     },
     accent: {
-      main: "#FFE3A1",
+      main: "#ffa255",
+    },
+    text: {
+      main: "#000",
     },
   },
 });
