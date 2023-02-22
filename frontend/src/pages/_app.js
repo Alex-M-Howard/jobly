@@ -18,7 +18,6 @@ export default function MyApp(props) {
   const [theme, setTheme] = useState(lightTheme);
 
   const toggleTheme = () => {
-    console.log(theme);
     setTheme(theme === lightTheme ? darkTheme : lightTheme);
   };
 
