@@ -7,13 +7,13 @@ const lightTheme = createTheme({
       main: "#00c4ff",
     },
     secondary: {
-      main: "#92f183",
+      main: "#fff089",
     },
     error: {
       main: "#CC1236",
     },
     accent: {
-      main: "#fff089",
+      main: "#92f183",
     },
     text: {
       main: "#000",
@@ -21,6 +21,9 @@ const lightTheme = createTheme({
     toggle: {
       main: "#FFF",
     },
+    background: {
+      main: "#FFF"
+    }
   },
 });
 
@@ -31,19 +34,22 @@ const darkTheme = createTheme({
       main: "#004ab9",
     },
     secondary: {
-      main: "#5E9A54",
+      main: "#ffa255",
     },
     error: {
       main: "#CC1236",
     },
     accent: {
-      main: "#ffa255",
+      main: "#5E9A54",
     },
     text: {
       main: "#000",
     },
     toggle: {
       main: "#000",
+    },
+    background: {
+      main: "#0B0B45",
     },
   },
 });
