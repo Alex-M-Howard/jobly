@@ -15,7 +15,10 @@ function CompanyCard({logo, name, description, theme}){
             title={name}
           />
           <CardContent
-            style={{ backgroundColor: `${theme.palette.secondary.main}` }}>
+            style={{
+              backgroundColor: `${theme.palette.secondary.main}`,
+              color: `${theme.palette.text.main}`,
+            }}>
             <Typography gutterBottom variant="h5" component="div">
               {name}
             </Typography>
