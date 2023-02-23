@@ -36,7 +36,8 @@ function Jobs() {
         spacing={2}
         justifyContent="center"
         alignItems="stretch"
-        style={{  padding: "10px", backgroundColor: `${theme.palette.background.main}`,
+        sx={{p: 10}}
+        style={{  backgroundColor: `${theme.palette.background.main}`,
          }}>
         {jobCards}
       </Grid>
