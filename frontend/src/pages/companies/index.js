@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import JoblyApi from "@/API";
 import { Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import CompanyCard from "@/components/CompanyCard";
+import CompanyCard from "@/components/Company";
 
 function Companies() {
   const theme = useTheme();
@@ -19,12 +19,13 @@ function Companies() {
 
   const companyCards = companies.map((company) => {
     return (
-      <CompanyCard 
-        logo={company.logo}
-        name={company.name}
-        description={company.description}
-        theme={theme}
-      />
+        <CompanyCard
+          logo={company.logo}
+          name={company.name}
+          handle={company.handle}
+          description={company.description}
+          theme={theme}
+        />
     );
   });
 
