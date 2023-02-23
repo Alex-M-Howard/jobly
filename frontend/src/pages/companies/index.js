@@ -36,10 +36,10 @@ function Companies() {
     <Grid
       container
       spacing={2}
+      sx={{p: 10}}
       justifyContent="center"
-      alignItems="center"
+      alignItems="stretch"
       style={{
-        padding: "10px",
         backgroundColor: `${theme.palette.background.main}`,
       }}
     >
