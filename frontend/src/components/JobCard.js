@@ -11,8 +11,8 @@ import {
 
   function JobCard({logo, companyName, title, salary, theme}){
     return (
-      <Grid item xs={12} sm={8} md={6} lg={4}>
-        <Card variant="outlined" sx={{ maxWidth: 425 }}>
+      <Grid item xs={12} sm={8} md={6} lg={4} sx={{m: 1}}>
+        <Card variant="outlined" sx={{ maxWidth: 425,  m: ' 5px auto' }}>
           <Card
             sx={{ display: "flex" }}
             style={{ backgroundColor: `${theme.palette.secondary.main}` }}>
