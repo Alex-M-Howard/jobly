@@ -3,6 +3,7 @@ import JoblyApi from "@/API";
 import { Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import CompanyCard from "@/components/Company";
+import Search from "@/components/Search"; 
 
 function Companies() {
   const theme = useTheme();
@@ -30,19 +31,24 @@ function Companies() {
   });
 
   return (
-    
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      sx={{ m: 'auto'}}
+      style={{
+        backgroundColor: `${theme.palette.background.main}`,
+      }}>
+      <Grid item>
+        <Search item="companies" />
+      </Grid>
       <Grid
         container
-        spacing={2}
         justifyContent="center"
-        alignItems="stretch"
-        style={{
-          padding: "10px",
-          backgroundColor: `${theme.palette.background.main}`,
-        }}>
+        sx={{ m: '5px auto' }}>
         {companyCards}
       </Grid>
-    
+    </Grid>
   );
 }
 
