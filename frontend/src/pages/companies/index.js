@@ -20,13 +20,16 @@ function Companies() {
 
   const companyCards = companies.map((company) => {
     return (
-        <CompanyCard
+      <Grid item xs={12} sm={8} md={6} lg={4} xl={3}>
+        <Company
           logo={company.logo}
           name={company.name}
           handle={company.handle}
           description={company.description}
           theme={theme}
+          style={{ transition: "all .5s ease-in-out" }}
         />
+      </Grid>
     );
   });
 

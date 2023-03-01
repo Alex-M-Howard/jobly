@@ -28,7 +28,7 @@ function NavBar(props) {
       onClick={handleDrawerToggle}
       sx={{ textAlign: "center" }}
       style={{
-        backgroundColor: `${theme.palette.background.main}`,
+        backgroundColor: `${theme.palette.secondary.main}`,
         height: "100%",
       }}
     >
