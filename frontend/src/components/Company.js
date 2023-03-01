@@ -2,13 +2,14 @@ import React from "react";
 import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
 import Link from "next/link";
 
-function Company({logo, name, handle, description, theme}){
+function CompanyCard({logo, name, handle, description, theme}){
     return (
-      <Grid item xs={12} sm={8} md={6} lg={4}>
+      <Grid item xs={12} sm={8} md={6} lg={4} sx={{m: '5px auto'}}>
         <Link
           href={`/companies/${handle}`}
-          style={{ textDecoration: "none"}}>
-          <Card variant="outlined" sx={{ maxWidth: 425 }}>
+          style={{ textDecoration: "none"}}
+          >
+          <Card variant="outlined" sx={{ maxWidth: 425, m: '5px auto' }}>
             <CardMedia
               sx={{ height: 140 }}
               image={
