@@ -91,6 +91,12 @@ class JoblyApi {
     return res.companies;
   }
 
+  // Get filtered companies
+  static async searchCompanies(qString) {
+    let res = await this.request(`companies?name=${qString}`);
+    return res.companies;
+  }
+
   // Get company by handle
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
