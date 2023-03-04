@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Form from "@/components/Form";
 import { Grid, Alert, AlertTitle, Typography } from "@mui/material";
 import JoblyApi from "@/API";
+import {UserContext} from "@/context/UserContext";
+import {useRouter} from "next/router";
 
 function Login() {
   const [error, setError] = useState(null);
+  const { toggleLoginStatus, setUser } = useContext(UserContext);
+  const router = useRouter();
 
   const fields = [
     { name: "username", label: "Username" },
@@ -23,6 +27,11 @@ function Login() {
 
     if (res.error) {
       setError(res.error);
+    } else {
+      toggleLoginStatus();
+      setUser({ username: formData.username })
+      router.push('/')
+
     }
   };
 
