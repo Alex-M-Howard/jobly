@@ -137,6 +137,12 @@ class JoblyApi {
     return res.jobs;
   }
 
+  // Get filtered jobs
+  static async searchJobs(qString) {
+    let res = await this.request(`jobs?title=${qString}`);
+    return res.jobs;
+  }
+
   // Get job by id
   static async getJob(id) {
     let res = await this.request(`jobs/${id}`);
@@ -161,7 +167,6 @@ class JoblyApi {
     return res.job;
   }
 
-
   /////////////////////
   //**
   //** Auth Routes
@@ -170,15 +175,15 @@ class JoblyApi {
 
   // Register new user
   static async registerUser(data) {
-  let res = await this.request(`auth/register`, data, (method = "post"));
-  return res.token;
+    let res = await this.request(`auth/register`, data, (method = "post"));
+    return res.token;
   }
 
   // Get user token
   static async loginUser(data) {
-  let res = await this.request(`auth/token`, data, (method = "post"));
-  return res.token;
-  } 
+    let res = await this.request(`auth/token`, data, (method = "post"));
+    return res.token;
+  }
 }
 
 // for now, put token ("testuser" / "password" on class)
