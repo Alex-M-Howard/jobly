@@ -1,28 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import { InputBase, Paper, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
-// Import Material UI
-import {InputBase, Paper, IconButton} from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+function Search({ item, search }) {
 
+  const [inputValue, setInputValue] = useState('')
 
-function Search({item, theme}){
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    search(inputValue);
+  };
 
-  return(
+  const handleChange = (evt) => {
+    setInputValue(evt.target.value);
+  };
+
+  return (
     <Paper
       component="form"
       elevation={10}
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400, m: '15px' }}
+      sx={{
+        p: "2px 4px",
+        display: "flex",
+        alignItems: "center",
+        width: 400,
+        m: "15px",
+      }}
+      onSubmit={handleSubmit} // add onSubmit handler to the form
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder={`Search ${item}`}
-        inputProps={{ 'aria-label': `search ${item}` }}
+        inputProps={{ "aria-label": `search ${item}` }}
+        onChange={handleChange}
       />
-      <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+      <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
         <SearchIcon />
       </IconButton>
     </Paper>
-  )
+  );
 }
 
 export default Search;
