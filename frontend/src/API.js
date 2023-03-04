@@ -174,9 +174,13 @@ class JoblyApi {
   /////////////////////
 
   // Register new user
-  static async registerUser(data) {
-    let res = await this.request(`auth/register`, data, (method = "post"));
-    return res.token;
+  static async registerUser(data, method = 'post') {
+    try {
+      let res = await this.request(`auth/register`, data, method);
+      return { result: 'success', token: res.token };
+    } catch (err) {
+      return { result: 'fail', error: err };
+    }  
   }
 
   // Get user token
