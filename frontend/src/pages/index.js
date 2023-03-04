@@ -1,4 +1,6 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Image from 'next/image';
+import { Grid } from '@mui/material';
 
 export default function Home() {
   return (
@@ -9,7 +11,22 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h3>Welcome to Jobly</h3>
+      <Grid
+        container
+        direction='column'
+        justifyContent='center'
+        alignItems='center'
+        style={{ backgroundColor: '#FFF', height: '100vh'}}
+      >
+        <Image
+          src="/main-pic.jpg"
+          alt="Main Picture"
+          width={1601}
+          height={800}
+          layout="responsive"
+          style={{ maxHeight: "80vh", maxWidth: "80vw" }}
+        />
+      </Grid>
     </>
-  )
+  );
 }
