@@ -184,9 +184,13 @@ class JoblyApi {
   }
 
   // Get user token
-  static async loginUser(data) {
-    let res = await this.request(`auth/token`, data, (method = "post"));
-    return res.token;
+  static async loginUser(data, method = 'post') {
+    try {
+    let res = await this.request(`auth/token`, data, method);
+      return { result: 'success', token: res.token };
+    } catch (err) {
+      return { result: 'fail', error: err };
+    }
   }
 }
 
