@@ -18,6 +18,16 @@ function Jobs() {
     fetchData();
   }, []);
 
+  const search = async (qString) => {
+    if (!qString) {
+      let data = await JoblyApi.getJobs();
+      setJobs(data);
+    } else {
+      let data = await JoblyApi.searchJobs(qString);
+      setJobs(data);
+    }
+  };
+
   const jobCards = jobs.map((job) => {
     return (
       <JobCard
@@ -38,13 +48,13 @@ function Jobs() {
       sx={{ m: 'auto'}}
       style={{ backgroundColor: `${theme.palette.background.main}` }}>
       <Grid item>
-        <Search item={"jobs"} />
+        <Search item={"jobs"} search={search} />
       </Grid>
       <Grid
         container
         justifyContent="center"
         sx={{m: '5px auto'}}>
-        {jobCards}
+        {jobs.length > 0 ? jobCards : 'No matching positions found...'}
       </Grid>
     </Grid>
   );
