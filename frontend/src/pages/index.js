@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import Head from 'next/head';
 import Image from 'next/image';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import { UserContext } from "@/context/UserContext";
 
 export default function Home() {
+  const { user } = useContext(UserContext);
+
   return (
     <>
       <Head>
@@ -13,11 +17,14 @@ export default function Home() {
       </Head>
       <Grid
         container
-        direction='column'
-        justifyContent='center'
-        alignItems='center'
-        style={{ backgroundColor: '#FFF', height: '100vh'}}
-      >
+        direction="column"
+        alignItems="center"
+        justifyContent="space-evenly"
+        style={{ backgroundColor: "#FFF", height: "100vh" }}>
+        {user.username
+         ? <Typography variant="h5" style={{color: "#000"}}>Welcome back, {user.username}!</Typography>
+         : null}
+
         <Image
           src="/main-pic.jpg"
           alt="Main Picture"
