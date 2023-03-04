@@ -1,6 +1,7 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import {UserContext} from "@/context/UserContext";
 
 // Import Material UI
 import { AppBar, Box, Divider, Drawer } from "@mui/material";
@@ -10,14 +11,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import { useTheme } from "@mui/material/styles";
 
-const drawerWidth = 240;
-const navItems = ["Companies", "Jobs", "Profile"];
+
 
 function NavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const router = useRouter();
   const theme = useTheme();
+
+  let { isLoggedIn } = useContext(UserContext);
+  const drawerWidth = 240;
+
+  let navItems;
+  navItems = isLoggedIn
+    ? ["Companies", "Jobs", "Profile"]
+    : ["Login", "Signup"];
+
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
