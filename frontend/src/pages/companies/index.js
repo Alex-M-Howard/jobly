@@ -25,20 +25,6 @@ function Companies() {
     return <Loading theme={theme} />
   }
 
-  const companyCards = companies.map((company) => {
-    return (
-      <Grid item xs={12} sm={8} md={6} lg={4} xl={3}>
-        <CompanyCard
-          logo={company.logo}
-          name={company.name}
-          handle={company.handle}
-          description={company.description}
-          theme={theme}
-        />
-      </Grid>
-    );
-  });
-
   const search = async (qString) => {
     if (!qString) {
       let data = await JoblyApi.getCompanies();
@@ -49,15 +35,25 @@ function Companies() {
     }
   }
 
+  const companyCards = companies.map((company) => {
+    return (
+        <CompanyCard
+          logo={company.logo}
+          name={company.name}
+          handle={company.handle}
+          description={company.description}
+          theme={theme}
+        />
+    );
+  });
+
   return (
     <Grid
       container
       direction="column"
       alignItems="center"
       sx={{ m: 'auto'}}
-      style={{
-        backgroundColor: `${theme.palette.background.main}`,
-      }}>
+      style={{ backgroundColor: `${theme.palette.background.main}`}}>
       <Grid item>
         <Search item="companies" search={search} />
       </Grid>

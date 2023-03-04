@@ -33,9 +33,6 @@ function CompanyCard({logo, name, handle, description, theme}){
         </Link>
       </Grid>
     );
-  }
-
-
-
-
+}
+  
 export default CompanyCard;
