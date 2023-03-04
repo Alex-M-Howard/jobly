@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "@/API";
-import { Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+
+// Import Components
+import { Grid } from "@mui/material";
 import JobCard from "@/components/JobCard";
 import Search from "@/components/Search";
+import Loading from "@/components/Loading";
 
 function Jobs() {
   const theme = useTheme();
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(null);
 
   useEffect(function fetchWhenMounted() {
     async function fetchData() {
@@ -17,6 +20,10 @@ function Jobs() {
 
     fetchData();
   }, []);
+
+  if (jobs === null) {
+    return <Loading theme={theme} />;
+  }
 
   const search = async (qString) => {
     if (!qString) {
@@ -48,7 +55,7 @@ function Jobs() {
       sx={{ m: 'auto'}}
       style={{ backgroundColor: `${theme.palette.background.main}` }}>
       <Grid item>
-        <Search item={"jobs"} search={search} />
+        <Search item={"job positions"} search={search} />
       </Grid>
       <Grid
         container

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "@/API";
-import { Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+
+// Import Components
+import { Grid } from "@mui/material";
 import CompanyCard from "@/components/Company";
 import Search from "@/components/Search"; 
+import Loading from "@/components/Loading";
 
 function Companies() {
   const theme = useTheme();
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState(null);
 
   useEffect(function fetchWhenMounted() {
     async function fetchData() {
@@ -17,6 +20,10 @@ function Companies() {
 
     fetchData();
   }, []);
+
+  if (companies === null) {
+    return <Loading theme={theme} />
+  }
 
   const companyCards = companies.map((company) => {
     return (

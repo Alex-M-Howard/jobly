@@ -4,6 +4,7 @@ import JoblyApi from "@/API";
 import { CircularProgress, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import CompanyInfoCard from "@/components/CompanyInfoCard";
+import Loading from "@/components/Loading";
 
 function CompanyInfo() {
   const [company, setCompany] = useState()
@@ -22,20 +23,7 @@ function CompanyInfo() {
   }, [companyHandle]);
   
   if (!company) {
-      return (
-        <Grid
-          container
-          justifyContent="center"
-          alignItems="center"
-          style={{  }}>
-          <Grid item>
-            <CircularProgress
-              size={70}
-              style={{ color: `${theme.palette.secondary.main}` }}
-            />
-          </Grid>
-        </Grid>
-      );
+    return <Loading theme={theme} />
     }
       
     return (
