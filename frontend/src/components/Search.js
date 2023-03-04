@@ -31,7 +31,7 @@ function Search({ item, search }) {
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder={`Search ${item}`}
-        inputProps={{ "aria-label": `search ${item}` }}
+        inputProps={{ "aria-label": `search for ${item}` }}
         onChange={handleChange}
       />
       <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
