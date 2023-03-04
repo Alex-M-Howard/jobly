@@ -42,7 +42,7 @@ function Form({ fields, initialValues, handleSubmit, buttonText }) {
       >
         {renderFields}
         <Grid item>
-          <Button variant="contained" type="submit" sx={{width: '200px'}}>
+          <Button variant="contained" type="submit" sx={{width: '350px'}}>
             {buttonText}
           </Button>
         </Grid>
