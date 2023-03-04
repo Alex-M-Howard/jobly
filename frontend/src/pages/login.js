@@ -30,8 +30,9 @@ function Login() {
     } else {
       toggleLoginStatus();
       setUser({ username: formData.username })
+      localStorage.setItem("username", formData.username);
+      localStorage.setItem("token", res.token);
       router.push('/')
-
     }
   };
 
