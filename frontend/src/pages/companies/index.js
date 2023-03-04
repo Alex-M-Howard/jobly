@@ -32,6 +32,16 @@ function Companies() {
     );
   });
 
+  const search = async (qString) => {
+    if (!qString) {
+      let data = await JoblyApi.getCompanies();
+      setCompanies(data);
+    } else {
+      let data = await JoblyApi.searchCompanies(qString);
+      setCompanies(data);
+    }
+  }
+
   return (
     <Grid
       container
@@ -42,13 +52,13 @@ function Companies() {
         backgroundColor: `${theme.palette.background.main}`,
       }}>
       <Grid item>
-        <Search item="companies" />
+        <Search item="companies" search={search} />
       </Grid>
       <Grid
         container
         justifyContent="center"
         sx={{ m: '5px auto' }}>
-        {companyCards}
+        {companies.length > 0 ? companyCards : 'No matching companies found...'}
       </Grid>
     </Grid>
   );
