@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Form from "@/components/Form";
-import { Grid, Alert, AlertTitle } from "@mui/material";
+import { Grid, Alert, AlertTitle, Typography } from "@mui/material";
 import JoblyApi from "@/API";
 
 function Signup() {
@@ -36,21 +36,26 @@ function Signup() {
   return (
     <Grid
       container
-      direction='column'
-      justifyContent='center'
-      alignItems='center'
-    >
+      direction="column"
+      justifyContent="center"
+      alignItems="center">
       {error !== null ? (
-        <Alert sx={{m: 2}} severity="error">
+        <Alert
+          sx={{ m: 2, minWidth: "350px", maxWidth: "350px" }}
+          severity="error">
           <AlertTitle>Error</AlertTitle>
           {error}
         </Alert>
       ) : null}
+      <Typography align="center" variant="h3" sx={{mt: 5}}>
+        Signup
+      </Typography>
+
       <Form
         fields={fields}
         initialValues={initialValues}
         handleSubmit={handleSubmit}
-        buttonText='Sign Up'
+        buttonText="Sign Up"
       />
     </Grid>
   );
