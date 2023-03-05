@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {UserContext} from "@/context/UserContext";
@@ -15,18 +15,18 @@ import { useTheme } from "@mui/material/styles";
 
 function NavBar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [navItems, setNavItems] = useState([]);
+  
   const router = useRouter();
   const theme = useTheme();
 
   let { isLoggedIn } = useContext(UserContext);
   const drawerWidth = 240;
 
-  let navItems;
-  navItems = isLoggedIn
-    ? ["Companies", "Jobs", "Profile"]
-    : ["Login", "Signup"];
-
+  useEffect(() => {
+    setNavItems(isLoggedIn ? ["Companies", "Jobs", "Profile", "Logout"] : ["Login", "Signup"])    
+  }, [isLoggedIn])
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
