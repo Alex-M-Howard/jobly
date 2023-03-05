@@ -21,7 +21,7 @@ const UserContextProvider = ({ children }) => {
   }, []);
 
   const toggleLoginStatus = () => {
-    setIsLoggedIn((state) => !state);
+    setIsLoggedIn(!isLoggedIn);
   };
 
   return (
