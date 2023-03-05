@@ -28,12 +28,14 @@ const UserContextProvider = ({ children }) => {
   const router = useRouter();
 
   const loginUser = (username, token) => {
+    toggleLoginStatus();
     setUser({ username: username });
     localStorage.setItem("username", username);
     localStorage.setItem("token", token);
   }
 
   const logoutUser = () => {
+    toggleLoginStatus();
     setUser({ username: null });
     localStorage.removeItem("username");
     localStorage.removeItem("token");
