@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import {UserContext} from "@/context/UserContext";
+import { UserContext } from "@/context/UserContext";
+import uuid4 from "uuid4";
 
 // Import Material UI
 import { AppBar, Box, Divider, Drawer } from "@mui/material";
@@ -56,7 +57,7 @@ function NavBar(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem disablePadding key={uuid4()}>
             <ListItemButton sx={{ textAlign: "center" }}>
               <Link
                 href={`/${item.toLowerCase()}`}
@@ -119,6 +120,7 @@ function NavBar(props) {
                 href={`/${item.toLowerCase()}`}
                 alt={item}
                 style={{ textDecoration: "none" }}
+                key={uuid4()}
               >
                 <Button
                   key={item}

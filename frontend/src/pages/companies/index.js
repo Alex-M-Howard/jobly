@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "@/API";
 import { useTheme } from "@mui/material/styles";
+import uuid4 from "uuid4";
 
 // Import Components
 import { Grid } from "@mui/material";
@@ -42,7 +43,8 @@ function Companies() {
           name={company.name}
           handle={company.handle}
           description={company.description}
-          theme={theme}
+        theme={theme}
+        key={uuid4()}
         />
     );
   });

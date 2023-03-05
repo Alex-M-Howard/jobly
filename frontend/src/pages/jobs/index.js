@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JoblyApi from "@/API";
 import { useTheme } from "@mui/material/styles";
+import uuid4 from "uuid4";
 
 // Import Components
 import { Grid } from "@mui/material";
@@ -43,6 +44,7 @@ function Jobs() {
         companyName={job.companyName}
         salary={job.salary}
         theme={theme}
+        key={uuid4()}
       />
     );
   });
