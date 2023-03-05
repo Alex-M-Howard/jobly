@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { useRouter } from "next/router";
 import JoblyApi from "@/API";
 
 export const UserContext = createContext();
@@ -24,9 +25,23 @@ const UserContextProvider = ({ children }) => {
     setIsLoggedIn(!isLoggedIn);
   };
 
+  const router = useRouter();
+
+  const loginUser = (username, token) => {
+    setUser({ username: username });
+    localStorage.setItem("username", username);
+    localStorage.setItem("token", token);
+  }
+
+  const logoutUser = () => {
+    setUser({ username: null });
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+  }
+
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, toggleLoginStatus, user, setUser }}>
+      value={{ isLoggedIn, toggleLoginStatus, user, loginUser, logoutUser }}>
       {children}
     </UserContext.Provider>
   );
