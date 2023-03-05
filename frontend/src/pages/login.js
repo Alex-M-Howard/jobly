@@ -7,7 +7,7 @@ import {useRouter} from "next/router";
 
 function Login() {
   const [error, setError] = useState(null);
-  const { toggleLoginStatus, setUser } = useContext(UserContext);
+  const { toggleLoginStatus, loginUser } = useContext(UserContext);
   const router = useRouter();
 
   const fields = [
@@ -28,10 +28,7 @@ function Login() {
     if (res.error) {
       setError(res.error);
     } else {
-      toggleLoginStatus();
-      setUser({ username: formData.username })
-      localStorage.setItem("username", formData.username);
-      localStorage.setItem("token", res.token);
+      loginUser(formData.username, res.token);
       router.push('/')
     }
   };
