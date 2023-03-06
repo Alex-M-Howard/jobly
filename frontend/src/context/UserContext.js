@@ -6,18 +6,20 @@ export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({ username: null });
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
+    async function getUserWithToken(token) {
+      JoblyApi.token = token;
+      let res = await JoblyApi.getUser(localStorage.getItem("username"))
       setIsLoggedIn(true);
-      setUser({username: localStorage.getItem("username")})
-      // Fetch user data using token and set the user state
-      // Example:
-      // let res = async () => {
-      //   await JoblyApi.getUser(token).then((userData) => setUser(userData))
-      // }
+      setUser(res);  
+    }
+    
+    const token = localStorage.getItem("token");
+    
+    if (token) {
+      getUserWithToken(token);
     }
   }, []);
 
@@ -36,7 +38,7 @@ const UserContextProvider = ({ children }) => {
 
   const logoutUser = () => {
     toggleLoginStatus();
-    setUser({ username: null });
+    setUser(null);
     localStorage.removeItem("username");
     localStorage.removeItem("token");
   }
