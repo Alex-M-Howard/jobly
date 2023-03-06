@@ -7,6 +7,7 @@ import JoblyApi from "@/API";
 function Profile() {
   const [error, setError] = useState(null);
   const { user } = useContext(UserContext);
+  let changes = null;
 
   if (!user) {
     return null;
@@ -27,10 +28,12 @@ function Profile() {
   const handleSubmit = async (formData) => {
     if (error) setError(null);
 
-    let res = await JoblyApi.registerUser(formData);
+    let res = await JoblyApi.updateUser(user.username, formData);
 
     if (res.error) {
       setError(res.error);
+    } else {
+      changes = true;
     }
   };
 
