@@ -21,9 +21,7 @@ export default function Home() {
         alignItems="center"
         justifyContent="space-evenly"
         style={{ backgroundColor: "#FFF", height: "100vh" }}>
-        {user.username
-         ? <Typography variant="h5" style={{color: "#000"}}>Welcome back, {user.username}!</Typography>
-         : null}
+        {user !== null ? <Typography variant="h5" style={{color: "#000"}}>Welcome back, {user.username}!</Typography> : null}
 
         <Image
           src="/main-pic.jpg"
