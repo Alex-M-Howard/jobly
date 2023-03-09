@@ -5,9 +5,9 @@ import { UserContext } from "@/context/UserContext";
 import JoblyApi from "@/API";
 
 function Profile() {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
+  const [alertShowing, setAlertToggle] = useState(false);
   const { user } = useContext(UserContext);
-  let changes = null;
 
   if (!user) {
     return null;
@@ -33,9 +33,14 @@ function Profile() {
     if (res.error) {
       setError(res.error);
     } else {
-      changes = true;
+      setAlertToggle(true);
+      setTimeout(() => {
+        setAlertToggle(false);
+      }, 3500);
     }
   };
+
+
 
   return (
     <Grid
@@ -43,6 +48,12 @@ function Profile() {
       direction="column"
       justifyContent="center"
       alignItems="center">
+      <Alert
+        sx={{ m: 2, minWidth: "350px", maxWidth: "350px", opacity: `${alertShowing ? '1' : '0'}`, transition: 'opacity 0.5s ease-in-out'}}
+        severity="success">
+        <AlertTitle>Success</AlertTitle>
+        Changes saved
+      </Alert>
       {error !== null ? (
         <Alert
           sx={{ m: 2, minWidth: "350px", maxWidth: "350px" }}
