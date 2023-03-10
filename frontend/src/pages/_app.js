@@ -21,7 +21,7 @@ export default function MyApp(props) {
   const [theme, setTheme] = useState(null);
   const router = useRouter();
   const currentRoute = router.route;
-  const user  = useContext(UserContext);
+  
   const acceptableRoutes = ['/', '/login', '/signup']
 
   const toggleTheme = () => {
@@ -48,7 +48,8 @@ export default function MyApp(props) {
     return 'Loading'
   }
 
-  if (!user && acceptableRoutes.indexOf(currentRoute) === -1) {
+
+  if (!localStorage.username && acceptableRoutes.indexOf(currentRoute) === -1) {
     router.push('/login')
   }
 
