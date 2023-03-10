@@ -13,7 +13,8 @@ const lightTheme = createTheme({
       main: "#CC1236",
     },
     accent: {
-      main: "#92f183",
+      main: "hsla(116, 89%, 63%, 1)",
+      secondary: "hsla(116, 89%, 25%, 1)",
     },
     text: {
       main: "#000",
@@ -22,8 +23,8 @@ const lightTheme = createTheme({
       main: "#FFF",
     },
     background: {
-      main: "#FFF"
-    }
+      main: "#FFF",
+    },
   },
 });
 
@@ -40,7 +41,8 @@ const darkTheme = createTheme({
       main: "#CC1236",
     },
     accent: {
-      main: "#5E9A54",
+      main: "hsla(105, 30%, 50%, 1)",
+      secondary: "hsla(105, 30%, 25%, 1)",
     },
     text: {
       main: "#000",
