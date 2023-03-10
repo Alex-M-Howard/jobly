@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import JoblyApi from "@/API";
 import { useTheme } from "@mui/material/styles";
 import uuid4 from "uuid4";
@@ -44,6 +44,7 @@ function Jobs() {
         companyName={job.companyName}
         salary={job.salary}
         theme={theme}
+        id={job.id}
         key={uuid4()}
       />
     );
