@@ -7,6 +7,7 @@ export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     async function getUserWithToken(token) {
@@ -27,8 +28,6 @@ const UserContextProvider = ({ children }) => {
     setIsLoggedIn(!isLoggedIn);
   };
 
-  const router = useRouter();
-
   const loginUser = (username, token) => {
     toggleLoginStatus();
     setUser({ username: username });
@@ -37,10 +36,14 @@ const UserContextProvider = ({ children }) => {
   }
 
   const logoutUser = () => {
-    toggleLoginStatus();
-    setUser(null);
-    localStorage.removeItem("username");
-    localStorage.removeItem("token");
+    if (user) {
+      toggleLoginStatus();
+      setUser(null);
+      localStorage.removeItem("username");
+      localStorage.removeItem("token");
+    } else {
+      router.push('/login')
+    }
   }
 
   return (
