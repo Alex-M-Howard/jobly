@@ -59,12 +59,10 @@ class JoblyApi {
   }
 
   // User apply for job
-  static async userApplyJob(username, jobId) {
-    let res = await this.request(
-      `users/${username}/jobs/${jobId}`,
-      (method = "post")
-    );
-    return res.user;
+  static async userApplyJob(username, jobId, method = 'post') {
+    
+    let res = await this.request(`users/${username}/jobs/${jobId}`, {}, method);
+    return res
   }
 
   // Edit user
