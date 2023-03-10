@@ -25,10 +25,15 @@ function Profile() {
     email: user.email,
   };
 
+  if (initialValues.firstName === initialValues.lastName === initialValues.email) {
+    return 'loading'
+  }
+
   const handleSubmit = async (formData) => {
     if (error) setError(null);
 
     let res = await JoblyApi.updateUser(user.username, formData);
+
 
     if (res.error) {
       setError(res.error);
