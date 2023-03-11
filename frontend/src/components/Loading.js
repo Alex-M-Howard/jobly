@@ -7,7 +7,7 @@ function Loading({theme}) {
       <Grid item>
         <CircularProgress
           size={70}
-          style={{ color: `${theme.palette.secondary.main}` }}
+          style={{ color: `${theme ? theme.palette.secondary.main : 'black'}` }}
         />
       </Grid>
     </Grid>

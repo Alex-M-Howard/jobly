@@ -3,12 +3,13 @@ import { Grid, CardContent, Divider, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import uuid4 from "uuid4";
 import { UserContext } from "@/context/UserContext";
+import Loading from "@/components/Loading";
 
 function CompanyInfoCard({ name, logo, description, numEmployees, jobs, theme }) {
   const { user, handleApplyJob } = useContext(UserContext);
   
   if (!user) {
-    return "loading";
+    return <Loading theme={theme} />
   }
   
 

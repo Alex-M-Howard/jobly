@@ -12,9 +12,23 @@ const UserContextProvider = ({ children }) => {
   useEffect(() => {
     async function getUserWithToken(token) {
       JoblyApi.token = token;
-      let res = await JoblyApi.getUser(localStorage.getItem("username"))
-      setIsLoggedIn(true);
-      setUser(res);  
+      let res;
+      const maxRetries = 3;
+      let retryCount = 0;
+      while (retryCount < maxRetries) {
+        try {
+          res = await JoblyApi.getUser(localStorage.getItem("username"));
+          setIsLoggedIn(true);
+          setUser(res);
+          return
+        } catch (error) {
+          console.error(`Error fetching user: ${error.message}. Retrying...`);
+          retryCount++;
+          // wait for 0.5 seconds before retrying
+          await new Promise((resolve) => setTimeout(resolve, 500));
+        }
+      }
+      throw new Error(`Failed to fetch user after ${maxRetries} retries`);
     }
     
     const token = localStorage.getItem("token");

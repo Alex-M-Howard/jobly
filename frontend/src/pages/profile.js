@@ -3,6 +3,8 @@ import Form from "@/components/Form";
 import { Grid, Alert, AlertTitle, Typography } from "@mui/material";
 import { UserContext } from "@/context/UserContext";
 import JoblyApi from "@/API";
+import Loading from "@/components/Loading";
+
 
 function Profile() {
   const [error, setError] = useState(null); 
@@ -26,7 +28,7 @@ function Profile() {
   };
 
   if (initialValues.firstName === initialValues.lastName === initialValues.email) {
-    return 'loading'
+    return <Loading theme={theme} />;
   }
 
   const handleSubmit = async (formData) => {

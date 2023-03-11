@@ -9,12 +9,14 @@ import {
   Button,
 } from "@mui/material";
 import { UserContext } from "@/context/UserContext";
+import Loading from "@/components/Loading";
+
 
 function JobCard({ id, logo, companyName, title, salary, theme }) {
   const { user, handleApplyJob } = useContext(UserContext);
 
   if (!user || !user.applications) {
-    return "loading";
+    return <Loading theme={theme} />;
   }
   
   const [applied, setApplied] = useState(user.applications.indexOf(id) !== -1);
@@ -23,10 +25,6 @@ function JobCard({ id, logo, companyName, title, salary, theme }) {
   useEffect(() => {
     setApplied(user.applications.indexOf(id) !== -1);
   }, [user]);
-
-  if (!user || !user.applications) {
-    return "loading";
-  }
 
   return (
     <Grid item xs={12} sm={8} md={6} lg={4} sx={{ m: 1 }}>

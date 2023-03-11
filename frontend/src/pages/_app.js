@@ -12,6 +12,7 @@ import "@fontsource/roboto/700.css";
 import UserContextProvider from "@/context/UserContext";
 import UserContext from "@/context/UserContext";
 import { useRouter } from "next/router";
+import Loading from "@/components/Loading";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -45,7 +46,7 @@ export default function MyApp(props) {
   }, [theme])
 
   if (!theme) {
-    return 'Loading'
+    return <Loading />;
   }
 
 
