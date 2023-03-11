@@ -50,20 +50,11 @@ function Companies() {
   });
 
   return (
-    <Grid
-      container
-      direction="column"
-      alignItems="center"
-      style={{ backgroundColor: `${theme.palette.background.main}`}}>
-      <Grid item>
-        <Search item="companies" search={search} />
+    <Grid container justifyContent="center">
+      <Grid item xs={12}>
+        <Search item="companies" search={search}  />
       </Grid>
-      <Grid
-        container
-        justifyContent="center"
-        >
-        {companies.length > 0 ? companyCards : 'No matching companies found...'}
-      </Grid>
+      {companies.length > 0 ? companyCards : "No matching companies found..."}
     </Grid>
   );
 }

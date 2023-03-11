@@ -23,9 +23,9 @@ function Search({ item, search }) {
         p: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: 400,
-        m: "15px",
+        m: "15px auto",
       }}
+      style= {{ width: '100vw', maxWidth: '400px'}}
       onSubmit={handleSubmit} // add onSubmit handler to the form
     >
       <InputBase

@@ -9,7 +9,7 @@ function CompanyCard({logo, name, handle, description, theme}){
           href={`/companies/${handle}`}
           style={{ textDecoration: "none"}}
           >
-          <Card variant="outlined" sx={{ maxWidth: 425, m: '10px 0px'}}>
+          <Card variant="outlined" sx={{ maxWidth: 425, m: '15px auto'}}>
             <CardMedia
               sx={{ height: 140 }}
               image={
