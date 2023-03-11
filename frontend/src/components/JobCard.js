@@ -8,11 +8,10 @@ import {
   Box,
   Button,
 } from "@mui/material";
-import JoblyApi from "@/API";
 import { UserContext } from "@/context/UserContext";
 
 function JobCard({ id, logo, companyName, title, salary, theme }) {
-  const { user } = useContext(UserContext);
+  const { user, handleApplyJob } = useContext(UserContext);
 
   if (!user || !user.applications) {
     return "loading";
@@ -20,11 +19,6 @@ function JobCard({ id, logo, companyName, title, salary, theme }) {
   
   const [applied, setApplied] = useState(user.applications.indexOf(id) !== -1);
 
-  const handleApply = async () => {
-    let res = await JoblyApi.userApplyJob(user.username, id);
-    user.applications.push(id);
-    setApplied(true);
-  };
 
   useEffect(() => {
     setApplied(user.applications.indexOf(id) !== -1);
@@ -92,7 +86,10 @@ function JobCard({ id, logo, companyName, title, salary, theme }) {
                       applied ? theme.palette.accent.secondary : ""
                     }`,
                   }}
-                  onClick={handleApply}
+                  onClick={() => {
+                    handleApplyJob(user.username, id);
+                    setApplied(true);
+                  }}
                   disabled={applied}>
                   {applied ? "Applied" : "Apply"}
                 </Button>

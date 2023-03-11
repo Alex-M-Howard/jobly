@@ -43,8 +43,8 @@ function Companies() {
           name={company.name}
           handle={company.handle}
           description={company.description}
-        theme={theme}
-        key={uuid4()}
+          theme={theme}
+          key={uuid4()}
         />
     );
   });
@@ -54,7 +54,6 @@ function Companies() {
       container
       direction="column"
       alignItems="center"
-      sx={{ m: 'auto'}}
       style={{ backgroundColor: `${theme.palette.background.main}`}}>
       <Grid item>
         <Search item="companies" search={search} />
@@ -62,7 +61,7 @@ function Companies() {
       <Grid
         container
         justifyContent="center"
-        sx={{ m: '5px auto' }}>
+        >
         {companies.length > 0 ? companyCards : 'No matching companies found...'}
       </Grid>
     </Grid>

@@ -21,15 +21,23 @@ export default function Home() {
         alignItems="center"
         justifyContent="space-evenly"
         style={{ backgroundColor: "#FFF", height: "100vh" }}>
-        {user !== null ? <Typography variant="h5" style={{color: "#000"}}>Welcome back, {user.username}!</Typography> : null}
+        {user !== null ? (
+          <Typography variant="h5" style={{ color: "#000" }}>
+            Welcome back, {user.username}!
+          </Typography>
+        ) : null}
 
         <Image
           src="/main-pic.jpg"
           alt="Main Picture"
           width={1601}
           height={800}
-          layout="responsive"
-          style={{ maxHeight: "80vh", maxWidth: "80vw" }}
+          style={{
+            maxHeight: "80vh",
+            maxWidth: "80vw",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
         />
       </Grid>
     </>

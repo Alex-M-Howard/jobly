@@ -46,9 +46,14 @@ const UserContextProvider = ({ children }) => {
     }
   }
 
+  const handleApplyJob = async (username, jobId) => {
+    await JoblyApi.userApplyJob(username, jobId);
+    setUser({ ...user, applications: [...user.applications, jobId] });
+  };
+
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, toggleLoginStatus, user, loginUser, logoutUser }}>
+      value={{ isLoggedIn, toggleLoginStatus, user, loginUser, logoutUser, handleApplyJob }}>
       {children}
     </UserContext.Provider>
   );

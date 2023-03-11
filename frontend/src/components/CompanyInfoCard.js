@@ -1,34 +1,52 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import { Grid, CardContent, Divider, Typography, Button } from "@mui/material";
 import Image from "next/image";
+import uuid4 from "uuid4";
+import { UserContext } from "@/context/UserContext";
 
 function CompanyInfoCard({ name, logo, description, numEmployees, jobs, theme }) {
+  const { user, handleApplyJob } = useContext(UserContext);
   
+  if (!user) {
+    return "loading";
+  }
+  
+
   const jobCards = jobs.map((job) => {
+
+    const [applied, setApplied] = useState(
+    user.applications.indexOf(job.id) !== -1
+  );
+
     return (
       <CardContent
+        key={uuid4()}
         style={{
           backgroundColor: `${theme.palette.secondary.main}`,
           color: `${theme.palette.text.main}`,
           display: "flex",
-          flexDirection: 'column',
+          flexDirection: "column",
         }}>
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Typography gutterBottom variant="h5" component="div">
             {job.title}
           </Typography>
           <Typography>{job.salary ? "$" + job.salary : ""}</Typography>
         </div>
 
+        
         <Button
           variant="outlined"
           style={{
             color: `${theme.palette.accent.main}`,
-            width: "200px",
-            height: "50px",
-            margin: '20px auto'
-          }}>
-          Apply
+            backgroundColor: `${applied ? theme.palette.accent.secondary : ""}`,
+          }}
+          onClick={() => {
+            handleApplyJob(user.username, job.id)
+            setApplied(true);
+          }}
+          disabled={applied}>
+          {applied ? "Applied" : "Apply"}
         </Button>
         <Divider />
       </CardContent>
@@ -49,8 +67,16 @@ function CompanyInfoCard({ name, logo, description, numEmployees, jobs, theme })
             : "https://previews.123rf.com/images/doublerdesign/doublerdesign1911/doublerdesign191100109/133223058-simple-building-icon-logo-design-inspiration-vector-illustration-template.jpg"
         }
         alt={`${name} Logo`}
-        width={500}
-        height={400}
+        width={1300}
+        height={1300}
+        style={{
+          maxHeight: "50vh",
+          maxWidth: "50vw",
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+        }}
       />
       <CardContent
         style={{

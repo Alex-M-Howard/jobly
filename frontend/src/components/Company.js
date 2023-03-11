@@ -4,12 +4,12 @@ import Link from "next/link";
 
 function CompanyCard({logo, name, handle, description, theme}){
     return (
-      <Grid item xs={12} sm={8} md={6} lg={4} sx={{m: 1}}>
+      <Grid item xs={12} sm={8} md={6} lg={4} >
         <Link
           href={`/companies/${handle}`}
           style={{ textDecoration: "none"}}
           >
-          <Card variant="outlined" sx={{ maxWidth: 425, m: '5px auto', minWidth: 400 }}>
+          <Card variant="outlined" sx={{ maxWidth: 425, m: '10px 0px'}}>
             <CardMedia
               sx={{ height: 140 }}
               image={
